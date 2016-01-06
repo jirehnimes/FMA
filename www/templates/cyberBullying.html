@@ -1,6 +1,6 @@
 <ion-view title="Cyber Bullying" id="cb">
     <ion-content scroll="false">
-		<section class="cbcontent" id="cbstart">
+		<section ng-init="scrollDiv_init()" class="cbcontent" id="cbstart">
 			<div id="testdiv">
 				<p></p>
 			</div>
@@ -72,6 +72,7 @@
 		</section>
 		<button class="button button-small button-assertive btnNext" ng-controller="popoverCtrl" ng-click="changeQues(); openPopover($event)">NEXT</button>
 		<button class="button button-small button-assertive btnNext1" ng-controller="popoverCtrl" ng-click="changePage('next');">NEXT</button>
-		<button class="button button-small button-assertive btnExit" ng-click="exit()" style="display: none;">EXIT</button>
+		<button class="button button-small button-assertive btnSkip" ng-click="skip()">SKIP</button>
+		<button ui-sref="category" class="button button-small button-assertive btnExit" style="display: none;">EXIT</button>
 	</ion-content>
 </ion-view>

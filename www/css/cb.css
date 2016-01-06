@@ -17,6 +17,7 @@
 	height: 10%;
 	max-width: 200px;
 	max-height: 50px;
+	display: none;
 }
 
 #cb .btnNext1{
@@ -29,6 +30,17 @@
 	max-width: 200px;
 	max-height: 50px;
 	display: none;
+}
+
+#cb .btnSkip{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
 }
 
 #cb .btnExit{

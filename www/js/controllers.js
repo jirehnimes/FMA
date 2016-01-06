@@ -6,7 +6,7 @@ angular.module('app.controllers', [])
 	};
 })
    
-.controller('categoryCtrl', function($scope) {
+.controller('categoryCtrl', function($scope, $state) {
 	// $scope.changeInitQues = function(cat){
 	// 	if (cat == "it"){
 	// 		$("#poq").text('What will she do? Keep it to herself?');
@@ -16,6 +16,9 @@ angular.module('app.controllers', [])
 	// 		$("#poq").text('What will she do?  Seek help to NBI / PNP Cybercrime Division?');
 	// 	}
 	// };
+	// $scope.navTo = function() {
+	// 	$state.reload()
+	// }
 })
    
 .controller('identityTheftCtrl', function($scope) {
@@ -93,22 +96,63 @@ angular.module('app.controllers', [])
 		$(".btnNext").show();
 	};
 })
-   
+
 .controller('cyberBullyingCtrl', function($scope, $state) {
 	$scope.page = "cbstart";
-	// $("#cbstart div").hide(0).delay(2000).fadeIn("slow");
-	// $("#cbstart div p").typed({
-	// 	strings: [$("#cbstart p").text()],
-	// 	typeSpeed: 0,
-	// 	startDelay: 2000
-	// });
+	$("#cbstart div").hide(0).delay(2000).fadeIn("slow");
+	$("#cbstart div p").typed({
+		strings: [$("#cbstart p").text()],
+		typeSpeed: 0,
+		startDelay: 2000
+	});
 	// $("#cb").click(function(event){
 	// 	$("#cbstart div p").data('typed').reset();
 	// });
+	// $("#poq").text("What will she do? Do you want to report it?");
+
+	ScrollRate = 1000;
+
+	$scope.scrollDiv_init = function() {
+		DivElmnt = document.getElementById('testdiv');
+		ReachedMaxScroll = false;
+		
+		DivElmnt.scrollTop = 0;
+		PreviousScrollTop  = 0;
+		
+		ScrollInterval = setInterval($scope.scrollDiv, ScrollRate);
+	}
+
+	$scope.scrollDiv = function() {
+		if (!ReachedMaxScroll) {
+			DivElmnt.scrollTop = PreviousScrollTop;
+			PreviousScrollTop++;
+			
+			ReachedMaxScroll = DivElmnt.scrollTop >= (DivElmnt.scrollHeight - DivElmnt.offsetHeight);
+		}
+		else {
+			ReachedMaxScroll = (DivElmnt.scrollTop == 0)?false:true;
+			
+			DivElmnt.scrollTop = PreviousScrollTop;
+			clearInterval(ScrollInterval);
+		}
+	}
+
+	$scope.skip = function(){
+		if($scope.page == "cbend1" || $scope.page == "cbend2" || $scope.page == "cbinfo1" || $scope.page == "cbinfo2"){
+			$(".btnSkip").hide();
+			$(".btnNext1").show();
+		}else{
+			$(".btnSkip").hide();
+			$(".btnNext").show();
+		}
+		$("#" + $scope.page + " div p").data('typed').reset();
+	}
 	$scope.changePage = function(ans){
 		if ($scope.page == "cbstart" && ans == "yes"){
 			$("#cbscene2").show();
 			$("#cbstart").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
 			$scope.page = "cbscene2";
 			$("#cbscene2 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbscene2 div p").typed({
@@ -119,6 +163,8 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "cbstart" && ans == "no"){
 			$("#cbscene1").show();
 			$("#cbstart").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
 			$scope.page = "cbscene1";
 			$("#cbscene1 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbscene1 div p").typed({
@@ -129,8 +175,8 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "cbscene1" && ans == "yes"){
 			$("#cbend1").show();
 			$("#cbscene1").hide();
+			$(".btnSkip").show();
 			$(".btnNext").hide();
-			$(".btnNext1").show();
 			$scope.page = "cbend1";
 			$("#cbend1 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbend1 div p").typed({
@@ -141,6 +187,8 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "cbscene1" && ans == "no"){
 			$("#cbscene2").show();
 			$("#cbscene1").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
 			$scope.page = "cbscene2";
 			$("#cbscene2 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbscene2 div p").typed({
@@ -151,8 +199,8 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "cbscene2" && ans == "yes"){
 			$("#cbend2").show();
 			$("#cbscene2").hide();
+			$(".btnSkip").show();
 			$(".btnNext").hide();
-			$(".btnNext1").show();
 			$scope.page = "cbend2";
 			$("#cbend2 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbend2 div p").typed({
@@ -163,8 +211,8 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "cbscene2" && ans == "no"){
 			$("#cbend1").show();
 			$("#cbscene2").hide();
+			$(".btnSkip").show();
 			$(".btnNext").hide();
-			$(".btnNext1").show();
 			$scope.page = "cbend1";
 			$("#cbend1 div").hide(0).delay(2000).fadeIn("slow");
 			$("#cbend1 div p").typed({
@@ -176,6 +224,8 @@ angular.module('app.controllers', [])
 			$("#cbinfo1").show();
 			$("#cbend1").hide();
 			$("#cbend2").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
 			$scope.page = "cbinfo1";
 			$("#cbinfo1 div").hide(0).delay(1000).fadeIn("slow");
 			$("#cbinfo1 div p").typed({
@@ -198,21 +248,14 @@ angular.module('app.controllers', [])
 		}
 	};
 	$scope.changeQues = function(){
-		if ($scope.page == "cbstart"){
-			$("#poq").text("What will she do? Do you want to report it?");
-		}else if ($scope.page == "cbscene1"){
+		if ($scope.page == "cbscene1"){
 			$("#poq").text("Do you want to keep it?");
 		}else if ($scope.page == "cbscene2"){
 			$("#poq").text("Would you like to report this case to the Guidance Counselor or School Administrator?");
 		}
 	};
 	$scope.exit = function(){
-		$scope.page = "cbstart";
-		$state.go('category');
-		$("#cbinfo2").hide();
-		$("#cbstart").show();
-		$(".btnExit").hide();
-		$(".btnNext").show();
+		$state.reload();
 	};
 })
    
