@@ -1,0 +1,79 @@
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+#category{
+	background-image: url(../img/mainbg.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	background-size:cover;
+	-webkit-animation:animatedBackground 40s linear infinite;
+	-moz-animation:animatedBackground 40s linear infinite;
+	-ms-animation:animatedBackground 40s linear infinite;
+	-o-animation:animatedBackground 40s linear infinite;
+	animation:animatedBackground 40s linear infinite;
+	height: 100vh;
+}
+
+#category ion-content{
+	padding: 0;
+	margin: 0;
+}
+
+#category .spacer{
+	padding: 0;
+	margin: 0;
+	height: 10%;
+}
+
+#category .title{
+	height: 17%;
+}
+
+#category .title .col{
+	height: 100%;
+}
+
+#category .title .text{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	-webkit-flex-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+#category .title h1{
+	font-size: 7vh;
+	color: white;
+}
+
+#category .btndiv{
+	height: 17%;
+	max-height: 60px;
+	padding: 5px;
+}
+
+#category .btndiv .col{
+	height: 100%;
+	padding: 5px;
+	padding-top: 0;
+}
+
+#category .button-block{
+	margin: 3px;
+	height: 100%;
+	min-height: 100%;
+	font-size: 3vh;
+	line-height: 3vh;
+}

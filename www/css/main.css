@@ -1,0 +1,72 @@
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+#main{
+	background-image: url(../img/mainbg.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	background-size:cover;
+	-webkit-animation:animatedBackground 40s linear infinite;
+	-moz-animation:animatedBackground 40s linear infinite;
+	-ms-animation:animatedBackground 40s linear infinite;
+	-o-animation:animatedBackground 40s linear infinite;
+	animation:animatedBackground 40s linear infinite;
+	height: 100vh;
+}
+
+#main ion-content{
+	padding: 0;
+	margin: 0;
+}
+
+#main .spacer{
+	padding: 0;
+	margin: 0;
+	height: 18%;
+	/*background-color: blue;*/
+}
+
+#main .imgtitlediv{
+	height: 30%;
+}
+
+#main .imgtitlediv .col{
+	height: 100%;
+	padding: 5px;
+	padding-top: 0;
+}
+
+#main #imgtitle{
+	height: 100%;
+	width: 80%;
+}
+
+#main .btndiv{
+	height: 17%;
+	max-height: 60px;
+	padding: 5px;
+}
+
+#main .btndiv .col{
+	height: 100%;
+	padding: 5px;
+	padding-top: 0;
+}
+
+#main .button-block{
+	margin: 3px;
+	height: 100%;
+	min-height: 100%;
+	font-size: 3vh;
+	line-height: 3vh;
+}
+
+
+

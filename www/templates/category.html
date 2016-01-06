@@ -1,0 +1,42 @@
+<ion-view title="Category" id="category">
+    <ion-content overflow-scroll="true" padding="true" scroll="false">
+        <div class="spacer"></div>
+        <div class="row row-no-padding title">
+            <div class="col col-30"></div>
+            <div class="col text">
+                <h1>
+                    <center>Choose a topic:</center>
+                </h1>
+            </div>
+            <div class="col col-30"></div>
+        </div>
+        <div class="row row-no-padding btndiv">
+            <div class="col col-30"></div>
+            <div class="col col-40">
+                <button ui-sref="identityTheft" class="button button-block button-assertive" ng-click="changeInitQues('it');">Identity Theft</button>
+            </div>
+            <div class="col col-30"></div>
+        </div>
+        <div class="row row-no-padding btndiv">
+            <div class="col col-30"></div>
+            <div class="col col-40">
+                <button ui-sref="cyberBullying" class="button button-block button-assertive" ng-controller="popoverCtrl" ng-click="changeInitQues('cb'); openPopover($event)">Cyber Bullying</button>
+            </div>
+            <div class="col col-30"></div>
+        </div> 
+        <div class="row row-no-padding btndiv">
+            <div class="col col-30"></div>
+            <div class="col col-40">
+                <button ui-sref="onlineHarassment" class="button button-block button-assertive" ng-click="changeInitQues('oh');">Online Harassment</button>
+            </div>
+            <div class="col col-30"></div>
+        </div> 
+        <div class="row row-no-padding btndiv">
+            <div class="col col-30"></div>
+            <div class="col col-40">
+                <button ui-sref="main" class="button button-block button-assertive">BACK</button>
+            </div>
+            <div class="col col-30"></div>
+        </div>  
+    </ion-content>
+</ion-view>

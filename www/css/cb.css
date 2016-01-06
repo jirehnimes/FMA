@@ -1,0 +1,118 @@
+#cb{
+	height: 100vh;
+	background-color: rgb(52,52,52);
+	color: white;
+}
+
+#cb ion-content{
+	padding: 0;
+}
+
+#cb .btnNext{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+#cb .btnNext1{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+	display: none;
+}
+
+#cb .btnExit{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+#cb .cbcontent{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#cb #cbstart{
+	background-image: url("../img/scenes/cb/cbstart.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbscene1{
+	background-image: url("../img/scenes/cb/cbscene1.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbscene2{
+	background-image: url("../img/scenes/cb/cbscene2.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbend1{
+	background-image: url("../img/scenes/cb/cbend1.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbend2{
+	background-image: url("../img/scenes/cb/cbend2.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbinfo1{
+	background-image: url("../img/scenes/cb/cbinfo1.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb #cbinfo2{
+	background-image: url("../img/scenes/cb/cbinfo2.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#cb .cbcontent div{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 40%;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+#cb #cbinfo1 div, #cb #cbinfo2 div{
+	height: 100%;
+}
+
+#cb #cbscene2 div{
+	position: absolute;
+	height: 20%;
+	bottom: 0;
+}
+
+#cb .cbcontent p{
+	text-align: justify;
+}
+
+#cb .typed-cursor{
+    display: none;
+}
