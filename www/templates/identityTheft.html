@@ -1,58 +1,75 @@
 <ion-view title="Identity Theft" id="it">
-    <ion-content padding="false" scroll="false" style="padding: 0;">
-    <ion-scroll style="width: 100%; height: 100vh;">
-		<section id="itstart">
-			<p>
-				Irene is a 16 year old HS Student who was surprised when she was informed by her friend Jona that her photo was on a tarpaulin outside the beerhouse to entice customers to come in.  To prove it, Jona apparently took a photo of the tarpaulin and showed to her. Irene was no doubt. It was her together with five other girls.
-			</p>
+    <ion-content ng-init="typedFunc()" scroll="false">
+		<section ng-init="scrollInit()" class="itcontent" id="itstart">
+			<div class="typeddiv" on-touch="stopAS()">
+				<p></p>
+			</div>
+			<div class="pcontent">
+				<p>
+					Irene is a 16 year old HS Student who was surprised when she was informed by her friend Jona that her photo was on a tarpaulin outside the beerhouse to entice customers to come in.  To prove it, Jona apparently took a photo of the tarpaulin and showed to her. Irene was no doubt. It was her together with five other girls.
+				</p>
+			</div>
 		</section>
-		<section id="itscene1" style="display: none;">
-			<p>
-				Scene... Irene feels depressed. She doesn’t want to go outside because of shame. 
-				If you keep it to yourself, the tarpaulin will still be there. Your reputation will be put in harm. 
-			</p>
+		<section class="itcontent" id="itscene1" style="display: none;">
+			<div class="typeddiv" on-touch="stopAS()">
+				<p></p>
+			</div>
+			<div class="pcontent">
+				<p>
+					Irene feels depressed. She doesn’t want to go outside because of shame. 
+					If you keep it to yourself, the tarpaulin will still be there. Your reputation will be put in harm. 
+				</p>
+			</div>
 		</section>
-		<section id="itscene2" style="display: none;">
-			<p>
-				Irene reported this incidence to her mother. Her mother went personally to the beerhouse to confirm the tarpaulin exists. 
-			</p>
+		<section class="itcontent" id="itscene2" style="display: none;">
+			<div class="typeddiv" on-touch="stopAS()">
+				<p></p>
+			</div>
+			<div class="pcontent">
+				<p>
+					Irene reported this incidence to her mother. Her mother went personally to the beerhouse to confirm the tarpaulin exists.
+				</p>
+			</div>
 		</section>
-		<section id="itscene3" style="display: none;">
-			<p>
-				Scene… 
-			</p>
+		<section class="itcontent" id="itscene3" style="display: none;">
 		</section>
-		<section id="itscene4" style="display: none;">
-			<p>
-				Scene… 
-			</p>
+		<section class="itcontent" id="itscene4" style="display: none;">
 		</section>
-		<section id="itend1" style="display: none;">
-			<p>
-				The perpetrator admitted that he used the girls’ photos without their consent to entice the customers.  And now faces a case of violating RA 7610 & 10175.
-				<ul>
-					<li>
-					Tarp removed in the establishment; Business permit was cancelled and license to operate revoked.
-					</li>
-					<li>
-					Perpetrator convicted under RA 10175 & RA 7610.
-					</li>
-					<li>
-					Victim/survivor are now undergoing counseling and became a youth advocate in their community tackling tech-VAW cases.
-					</li>
-				</ul>
-				<h3>CASE SOLVED!</h3>
-			</p>
+		<section class="itcontent" id="itend1" style="display: none;">
+			<div class="typeddiv" on-touch="stopAS()">
+				<p></p>
+			</div>
+			<div class="pcontent">
+				<p>
+					The perpetrator admitted that he used the girls’ photos without their consent to entice the customers.  And now faces a case of violating RA 7610 & 10175.
+					</br></br>
+					1. Tarp removed in the establishment; Business permit was cancelled and license to operate revoked.
+					</br></br>
+					2. Perpetrator convicted under RA 10175 & RA 7610.
+					</br></br>
+					3. Victim/survivor are now undergoing counseling and became a youth advocate in their community tackling tech-VAW cases.
+					</br></br>
+					<span class="solvetitle">CASE SOLVED!</span>
+				</p>
+			</div>
 		</section>
-		<section id="itend2" style="display: none;">
-			<p>
-				Scene… Irene ignored the incidence. Dino continuously using the tarpaulin to entice customer.   
-				RA 7610 –is an act providing for stronger deterrence and special protection against child abuse, exploitation and discrimination, providing penalties for its violation and for other purposes.
-				RA 10175 - It aims to address legal issues concerning online interactions and the Internet in the Philippines. Among the cybercrime offenses included in the bill are cybersquatting, cybersex, child pornography, identity theft, illegal access to data and libel.
-			</p>
+		<section class="itcontent" id="itend2" style="display: none;">
+			<div class="typeddiv" on-touch="stopAS()">
+				<p></p>
+			</div>
+			<div class="pcontent">
+				<p>
+					Irene ignored the incidence. Dino continuously using the tarpaulin to entice customer. 
+					</br></br>
+					<span class="ptitle">RA 7610</span> – is an act providing for stronger deterrence and special protection against child abuse, exploitation and discrimination, providing penalties for its violation and for other purposes.
+					</br></br>
+					<span class="ptitle">RA 10175</span> - It aims to address legal issues concerning online interactions and the Internet in the Philippines. Among the cybercrime offenses included in the bill are cybersquatting, cybersex, child pornography, identity theft, illegal access to data and libel.
+				</p>
+			</div>
 		</section>
-		<button class="button button-stable button-block btnNext" ng-controller="popoverCtrl" ng-click="changeQues(); openPopover($event)">NEXT</button>
-		<a href="#/category" class="button button-stable button-block btnExit" ng-controller="popoverCtrl" ng-click="exit()" style="display: none;">EXIT</a>
-	</ion-scroll>
+		<button class="button button-small button-assertive btnNext" ng-controller="popoverCtrl" ng-click="changeQues(); openPopover($event, 'it')">NEXT</button>
+		<button class="button button-small button-assertive btnNext1" ng-click="changePage('next');">NEXT</button>
+		<button class="button button-small button-assertive btnSkip" ng-click="skip()">SKIP</button>
+		<button ui-sref="category" class="button button-small button-assertive btnExit" style="display: none;">EXIT</button>
     </ion-content>
 </ion-view>

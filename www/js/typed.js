@@ -399,6 +399,13 @@
             // Send the callback
             self.options.resetCallback();
         }
+        
+        , 
+        stops: function() {
+            var self = this;
+            self.strings = [];
+            clearInterval(self.timeout);
+        }
 
     };
 

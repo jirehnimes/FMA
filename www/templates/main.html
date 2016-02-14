@@ -4,23 +4,27 @@
         <div class="row row-no-padding imgtitlediv">
             <div class="col col-25"></div>
             <div class="col center">
-                <img src="img/fmaph.PNG" id="imgtitle" />
+                <img src="img/aksyonvawlogo.png" id="imgtitle" />
             </div>
             <div class="col col-25"></div>
         </div>
         <div class="row row-no-padding btndiv">
-            <div class="col col-30"></div>
-            <div class="col col-40">
-                <button ui-sref="category" class="button button-block button-assertive">START</button>
+            <div class="col col-35"></div>
+            <div class="col col-30">
+                <div>
+                    <button ui-sref="category" class="button button-block button-assertive">START</button>
+                </div>
+                <div>
+                    <button ui-sref="about" class="button button-block button-assertive">ABOUT</button>
+                </div>
+                <div>
+                    <a href="#" onclick="window.open('https://ph.takebackthetech.net/mapit/reports/submit', '_system');"><button class="button button-block button-assertive">CONTACT</button></a>
+                </div>
+                <div>
+                    <button ng-click="exitApp()" class="button button-block button-assertive">QUIT</button>
+                </div>
             </div>
-            <div class="col col-30"></div>
-        </div> 
-        <div class="row row-no-padding btndiv">
-            <div class="col col-30"></div>
-            <div class="col col-40">
-                <button ng-click="exitApp()" class="button button-block button-assertive">QUIT</button>
-            </div>
-            <div class="col col-30"></div>
+            <div class="col col-35"></div>
         </div>
     </ion-content>
 </ion-view>

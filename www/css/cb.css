@@ -103,7 +103,7 @@
 	background-repeat: no-repeat;
 }
 
-#cb .cbcontent div{
+#cb .cbcontent div.typeddiv{
 	background-color: rgba(0,0,0,0.5);
 	width: 100%;
 	height: 40%;
@@ -111,11 +111,11 @@
 	overflow-y: auto;
 }
 
-#cb #cbinfo1 div, #cb #cbinfo2 div{
-	height: 100%;
+#cb #cbinfo1 div.typeddiv, #cb #cbinfo2 div.typeddiv{
+	height: 80%;
 }
 
-#cb #cbscene2 div{
+#cb #cbscene2 div.typeddiv{
 	position: absolute;
 	height: 20%;
 	bottom: 0;
@@ -127,4 +127,32 @@
 
 #cb .typed-cursor{
     display: none;
+}
+
+#cb div.pcontent{
+	display: none;
+}
+
+#cb span.quote{
+	color: rgb(51, 102, 255);
+	font-weight: bold;
+	background-color: rgba(255,255,255,0.7);
+}
+
+#cb span.endtitle{
+	color: red;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#cb span.solvetitle{
+	color: rgb(0, 255, 0);
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#cb span.ptitle{
+	color: rgb(255, 102, 0);
+	font-weight: bold;
+	font-size: 1.3em;
 }

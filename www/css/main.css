@@ -29,44 +29,44 @@
 #main .spacer{
 	padding: 0;
 	margin: 0;
-	height: 18%;
-	/*background-color: blue;*/
+	height: 0%;
 }
 
 #main .imgtitlediv{
-	height: 30%;
+	height: 50%;
+	top: 0;
 }
 
 #main .imgtitlediv .col{
 	height: 100%;
 	padding: 5px;
-	padding-top: 0;
 }
 
 #main #imgtitle{
 	height: 100%;
-	width: 80%;
+	width: 50%;
 }
 
 #main .btndiv{
-	height: 17%;
-	max-height: 60px;
-	padding: 5px;
+	height: 50%;
+	padding: 0;
 }
 
 #main .btndiv .col{
 	height: 100%;
-	padding: 5px;
-	padding-top: 0;
+	padding: 0;
 }
 
-#main .button-block{
-	margin: 3px;
-	height: 100%;
-	min-height: 100%;
+#main .btndiv .col-30 div{
+	height: 25%;
+}
+
+#main .button{
+	margin: 0;
+	border: 0;
+	padding: 0;
+	height: 20%;
+	min-height: 90%;
 	font-size: 3vh;
 	line-height: 3vh;
 }
-
-
-
