@@ -5,16 +5,106 @@
 }
 
 #oh ion-content{
-	padding: 20px;
-	padding-top: 0;
-	padding-bottom: 0;
-	margin: 0;
+	padding: 0;
 }
 
 #oh .btnNext{
 	position: absolute;
-	bottom: 0;
+	padding: 0;
+	bottom: 20px;
 	right: 20px;
 	width: 20%;
-	max-width: 100px;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+	display: none;
+}
+
+#oh .btnNext1{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+	display: none;
+}
+
+#oh .btnSkip{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+#oh .btnExit{
+	position: absolute;
+	padding: 0;
+	bottom: 20px;
+	right: 20px;
+	width: 20%;
+	height: 10%;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+#oh .ohcontent{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#oh .ohcontent div.typeddiv{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 40%;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+#oh #ohscene1 div.typeddiv, #oh #ohend1 div.typeddiv, #oh #ohend2 div.typeddiv, #oh #ohend3 div.typeddiv{
+	height: 80%;
+}
+
+#oh .ohcontent p{
+	text-align: justify;
+}
+
+#oh .typed-cursor{
+    display: none;
+}
+
+#oh div.pcontent{
+	display: none;
+}
+
+#oh span.quote{
+	color: rgb(51, 102, 255);
+	font-weight: bold;
+	background-color: rgba(255,255,255,0.7);
+}
+
+#oh span.endtitle{
+	color: red;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#oh span.solvetitle{
+	color: rgb(0, 255, 0);
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+#oh span.ptitle{
+	color: rgb(255, 102, 0);
+	font-weight: bold;
+	font-size: 1.3em;
 }

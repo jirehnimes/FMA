@@ -110,6 +110,7 @@ angular.module('app.controllers', [])
 			$scope.page = "itscene1";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
+			$scope.stopMedia();
 		}else if ($scope.page == "itstart" && ans == "no"){
 			$("#itscene2").show();
 			$("#itstart").hide();
@@ -118,6 +119,7 @@ angular.module('app.controllers', [])
 			$scope.page = "itscene2";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
+			$scope.stopMedia();
 		}else if ($scope.page == "itscene1" && ans == "yes"){
 			$("#itend2").show();
 			$("#itscene1").hide();
@@ -301,7 +303,7 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv p").typed('stops');
 		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
-		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
 		clearInterval(autoScroll);
 		$scope.stopMedia();
 	};
@@ -316,7 +318,6 @@ angular.module('app.controllers', [])
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
 			$scope.stopMedia();
-			$scope.playMedia();
 		}else if ($scope.page == "cbstart" && ans == "no"){
 			$("#cbscene1").show();
 			$("#cbstart").hide();
@@ -325,6 +326,7 @@ angular.module('app.controllers', [])
 			$scope.page = "cbscene1";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
+			$scope.stopMedia();
 		}else if ($scope.page == "cbscene1" && ans == "yes"){
 			$("#cbend1").show();
 			$("#cbscene1").hide();
@@ -391,8 +393,149 @@ angular.module('app.controllers', [])
 	};
 })
 
-.controller('onlineHarassmentCtrl', function($scope) {
+.controller('onlineHarassmentCtrl', function($scope, $state, $ionicPlatform, $cordovaMedia) {
+	var autoScroll;
+	$scope.page = "ohstart";
 
+	$ionicPlatform.ready(function() {
+		var src = "/android_asset/www/audio/case3.mp3";
+		var media = $cordovaMedia.newMedia(src);
+
+		$scope.playMedia = function() {
+			media.play();
+		};
+
+		$scope.pauseMedia = function() {
+			media.pause();
+		};
+
+		$scope.stopMedia = function() {
+			media.stop();
+		};
+
+		$scope.$on('destroy', function() {
+			media.release();
+		});
+	});
+
+	$ionicPlatform.onHardwareBackButton(function(e){
+		$scope.skip();
+	});
+
+	$scope.stopMedia();
+	$scope.playMedia();
+
+	$scope.asFunc = function(){
+		var em = $("#" + $scope.page + " div.typeddiv")[0].scrollHeight;
+		$("#" + $scope.page + " div.typeddiv").scrollTop(em);
+	};
+
+	$scope.typedFunc = function(){
+		$("#" + $scope.page + " div.typeddiv").hide(0).delay(2000).fadeIn("slow");
+		$("#" + $scope.page + " div.typeddiv p").typed({
+			stringsElement: $("#" + $scope.page + " div.pcontent"),
+			typeSpeed: 0,
+			contentType: 'html',
+			startDelay: 2000,
+			callback: function() {
+				$scope.btnCon();
+				clearInterval(autoScroll);
+			}
+		});
+	};
+
+	$scope.scrollInit = function(){
+		autoScroll = setInterval($scope.asFunc, 500);
+	};
+
+	$scope.stopAS = function(){
+		clearInterval(autoScroll);
+	};
+
+	$scope.contAS = function(){
+		autoScroll = setInterval($scope.asFunc, 500);
+	};
+
+	$scope.btnCon = function(){
+		if($scope.page == "ohend1" || $scope.page == "ohend2"){
+			$(".btnSkip").hide();
+			$(".btnNext1").show();
+		}else if($scope.page == "ohend3"){
+			$(".btnSkip").hide();
+			$(".btnExit").show();
+		}else{
+			$(".btnSkip").hide();
+			$(".btnNext").show();
+		}
+	};
+
+	$scope.skip = function(){
+		$scope.btnCon();
+		$("#" + $scope.page + " div.typeddiv p").typed('stops');
+		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
+		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
+		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		// $("p.typeddelay").css("display", "none");
+		clearInterval(autoScroll);
+		$scope.stopMedia();
+	};
+
+	$scope.changePage = function(ans){
+		if ($scope.page == "ohstart" && ans == "yes"){
+			$("#ohscene1").show();
+			$("#ohstart").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
+			$scope.page = "ohscene1";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+			$scope.stopMedia();
+		}else if ($scope.page == "ohstart" && ans == "no"){
+			$("#ohend2").show();
+			$("#ohstart").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "ohend2";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+			$scope.stopMedia();
+		}else if ($scope.page == "ohscene1" && ans == "yes"){
+			$("#ohend1").show();
+			$("#ohscene1").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "ohend1";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+		}else if ($scope.page == "ohscene1" && ans == "no"){
+			$("#ohend2").show();
+			$("#ohscene1").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "ohend2";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+		}else if (($scope.page == "ohend1" || $scope.page == "ohend2") && ans == "next"){
+			$("#ohend3").show();
+			$("#ohend1").hide();
+			$("#ohend2").hide();
+			$(".btnSkip").show();
+			$(".btnExit").hide();
+			$scope.page = "ohend3";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+		}
+	};
+
+	$scope.changeQues = function(){
+		if ($scope.page == "ohscene1"){
+			$("#poq2").text("Would you like to file a case against the perpetrator?");
+		}
+	};
+
+	$scope.exit = function(){
+		$state.reload();
+	};
 })
 
 .controller('popoverCtrl', function($scope, $ionicPopover) {

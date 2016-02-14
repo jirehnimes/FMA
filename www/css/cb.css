@@ -129,7 +129,7 @@
     display: none;
 }
 
-#cb div.pcontent{
+#cb div.pcontent, #cb div.pcontent1{
 	display: none;
 }
 
@@ -156,3 +156,4 @@
 	font-weight: bold;
 	font-size: 1.3em;
 }
+
