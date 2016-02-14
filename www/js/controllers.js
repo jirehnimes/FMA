@@ -15,9 +15,37 @@ angular.module('app.controllers', [])
 .controller('categoryCtrl', function($scope) {
 })
 
-.controller('identityTheftCtrl', function($scope) {
+.controller('identityTheftCtrl', function($scope, $state, $ionicPlatform, $cordovaMedia) {
 	var autoScroll;
 	$scope.page = "itstart";
+
+	$ionicPlatform.ready(function() {
+		var src = "/android_asset/www/audio/case1.mp3";
+		var media = $cordovaMedia.newMedia(src);
+
+		$scope.playMedia = function() {
+			media.play();
+		};
+
+		$scope.pauseMedia = function() {
+			media.pause();
+		};
+
+		$scope.stopMedia = function() {
+			media.stop();
+		};
+
+		$scope.$on('destroy', function() {
+			media.release();
+		});
+	});
+
+	$ionicPlatform.onHardwareBackButton(function(e){
+		$scope.skip();
+	});
+
+	$scope.stopMedia();
+	$scope.playMedia();
 
 	$scope.asFunc = function(){
 		var em = $("#" + $scope.page + " div.typeddiv")[0].scrollHeight;
@@ -51,9 +79,12 @@ angular.module('app.controllers', [])
 	};
 
 	$scope.btnCon = function(){
-		if($scope.page == "itend1" || $scope.page == "itend2"){
+		if( $scope.page == "itend4" ){
 			$(".btnSkip").hide();
 			$(".btnExit").show();
+		}else if( $scope.page == "itend1" || $scope.page == "itend2" || $scope.page == "itend3" ){
+			$(".btnSkip").hide();
+			$(".btnNext1").show();
 		}else{
 			$(".btnSkip").hide();
 			$(".btnNext").show();
@@ -67,18 +98,11 @@ angular.module('app.controllers', [])
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
 		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
 		clearInterval(autoScroll);
+		$scope.stopMedia();
 	};
 
 	$scope.changePage = function(ans){
 		if ($scope.page == "itstart" && ans == "yes"){
-			$("#itscene2").show();
-			$("#itstart").hide();
-			$(".btnSkip").show();
-			$(".btnNext").hide();
-			$scope.page = "itscene2";
-			autoScroll = setInterval($scope.asFunc, 500);
-			$scope.typedFunc();
-		}else if ($scope.page == "itstart" && ans == "no"){
 			$("#itscene1").show();
 			$("#itstart").hide();
 			$(".btnSkip").show();
@@ -86,11 +110,19 @@ angular.module('app.controllers', [])
 			$scope.page = "itscene1";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
+		}else if ($scope.page == "itstart" && ans == "no"){
+			$("#itscene2").show();
+			$("#itstart").hide();
+			$(".btnSkip").show();
+			$(".btnNext").hide();
+			$scope.page = "itscene2";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
 		}else if ($scope.page == "itscene1" && ans == "yes"){
 			$("#itend2").show();
 			$("#itscene1").hide();
 			$(".btnSkip").show();
-			$(".btnExit").hide();
+			$(".btnNext1").hide();
 			$scope.page = "itend2";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
@@ -114,7 +146,7 @@ angular.module('app.controllers', [])
 			$("#itend2").show();
 			$("#itscene2").hide();
 			$(".btnSkip").show();
-			$(".btnExit").hide();
+			$(".btnNext1").hide();
 			$scope.page = "itend2";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
@@ -130,7 +162,7 @@ angular.module('app.controllers', [])
 			$("#itend2").show();
 			$("#itscene3").hide();
 			$(".btnSkip").show();
-			$(".btnExit").hide();
+			$(".btnNext1").hide();
 			$scope.page = "itend2";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
@@ -138,7 +170,7 @@ angular.module('app.controllers', [])
 			$("#itend1").show();
 			$("#itscene4").hide();
 			$(".btnSkip").show();
-			$(".btnExit").hide();
+			$(".btnNext1").hide();
 			$scope.page = "itend1";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
@@ -146,8 +178,25 @@ angular.module('app.controllers', [])
 			$("#itend2").show();
 			$("#itscene4").hide();
 			$(".btnSkip").show();
-			$(".btnExit").hide();
+			$(".btnNext1").hide();
 			$scope.page = "itend2";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+		}else if (($scope.page == "itend1" || $scope.page == "itend2") && ans == "next"){
+			$("#itend3").show();
+			$("#itend1").hide();
+			$("#itend2").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "itend3";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+		}else if ($scope.page == "itend3" && ans == "next"){
+			$("#itend4").show();
+			$("#itend3").hide();
+			$(".btnSkip").show();
+			$(".btnExit").hide();
+			$scope.page = "itend4";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
 		}
@@ -159,7 +208,7 @@ angular.module('app.controllers', [])
 		}else if ($scope.page == "itscene2"){
 			$("#poq1").text("Do you want to gather evidences and other information?");
 		}else if ($scope.page == "itscene3"){
-			$("#poq1").text("Report  to PNP-Anti VAWC Desk and City Social Welfare office?");
+			$("#poq1").text("Report to PNP-Anti VAWC Desk and City Social Welfare office?");
 		}else if ($scope.page == "itscene4"){
 			$("#poq1").text("Filing a case against the perpetrator?");
 		}
@@ -176,7 +225,7 @@ angular.module('app.controllers', [])
 	$scope.page = "cbstart";
 
 	$ionicPlatform.ready(function() {
-		var src = "/android_asset/www/audio/case21.mp3";
+		var src = "/android_asset/www/audio/case2.mp3";
 		var media = $cordovaMedia.newMedia(src);
 
 		$scope.playMedia = function() {

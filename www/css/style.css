@@ -33,6 +33,10 @@
 
 .android-scroll-bar ::-webkit-scrollbar-thumb:window-inactive {background: rgb(128,128,128); }
 
+html, body{
+  background-color: black;
+}
+
 body{
   position: fixed;
   height: 100%;
