@@ -1,3 +1,7 @@
 #po #poq, #po #poq1, #po #poq2{
 	text-align: justify;
 }
+
+#po .button-assertive{
+	background-color: #ef473a !important;
+}

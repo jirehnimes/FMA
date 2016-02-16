@@ -263,7 +263,7 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv").hide(0).delay(2000).fadeIn("slow");
 		$("#" + $scope.page + " div.typeddiv p").typed({
 			stringsElement: $("#" + $scope.page + " div.pcontent"),
-			typeSpeed: 0,
+			typeSpeed: 13,
 			contentType: 'html',
 			startDelay: 2000,
 			callback: function() {
@@ -395,28 +395,29 @@ angular.module('app.controllers', [])
 
 .controller('onlineHarassmentCtrl', function($scope, $state, $ionicPlatform, $cordovaMedia) {
 	var autoScroll;
-	$scope.page = "ohstart";
+	
+	$scope.page = "ohstart1";
 
-	$ionicPlatform.ready(function() {
-		var src = "/android_asset/www/audio/case3.mp3";
-		var media = $cordovaMedia.newMedia(src);
+	var src = "/android_asset/www/audio/case3a.mp3";
 
-		$scope.playMedia = function() {
-			media.play();
-		};
+	var media = $cordovaMedia.newMedia(src);
 
-		$scope.pauseMedia = function() {
-			media.pause();
-		};
+	$scope.playMedia = function() {
+		media.play();
+	};
 
-		$scope.stopMedia = function() {
-			media.stop();
-		};
+	$scope.pauseMedia = function() {
+		media.pause();
+	};
 
-		$scope.$on('destroy', function() {
-			media.release();
-		});
+	$scope.stopMedia = function() {
+		media.stop();
+	};
+
+	$scope.$on('destroy', function() {
+		media.release();
 	});
+	
 
 	$ionicPlatform.onHardwareBackButton(function(e){
 		$scope.skip();
@@ -434,7 +435,7 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv").hide(0).delay(2000).fadeIn("slow");
 		$("#" + $scope.page + " div.typeddiv p").typed({
 			stringsElement: $("#" + $scope.page + " div.pcontent"),
-			typeSpeed: 0,
+			typeSpeed: 13,
 			contentType: 'html',
 			startDelay: 2000,
 			callback: function() {
@@ -457,7 +458,7 @@ angular.module('app.controllers', [])
 	};
 
 	$scope.btnCon = function(){
-		if($scope.page == "ohend1" || $scope.page == "ohend2"){
+		if($scope.page == "ohstart1" || $scope.page == "ohstart2" || $scope.page == "ohend1" || $scope.page == "ohend2"){
 			$(".btnSkip").hide();
 			$(".btnNext1").show();
 		}else if($scope.page == "ohend3"){
@@ -474,25 +475,49 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv p").typed('stops');
 		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
-		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
 		// $("p.typeddelay").css("display", "none");
 		clearInterval(autoScroll);
 		$scope.stopMedia();
 	};
 
 	$scope.changePage = function(ans){
-		if ($scope.page == "ohstart" && ans == "yes"){
+		if ($scope.page == "ohstart1" && ans == "next"){
+			$("#ohstart2").show();
+			$("#ohstart1").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "ohstart2";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+			$scope.stopMedia();
+			src = "/android_asset/www/audio/case3b.mp3";
+			media = $cordovaMedia.newMedia(src);
+			$scope.playMedia();
+		}else if ($scope.page == "ohstart2" && ans == "next"){
+			$("#ohstart3").show();
+			$("#ohstart2").hide();
+			$(".btnSkip").show();
+			$(".btnNext1").hide();
+			$scope.page = "ohstart3";
+			autoScroll = setInterval($scope.asFunc, 500);
+			$scope.typedFunc();
+			$scope.stopMedia();
+			src = "/android_asset/www/audio/case3c.mp3";
+			media = $cordovaMedia.newMedia(src);
+			$scope.playMedia();
+		}else if ($scope.page == "ohstart3" && ans == "yes"){
 			$("#ohscene1").show();
-			$("#ohstart").hide();
+			$("#ohstart3").hide();
 			$(".btnSkip").show();
 			$(".btnNext").hide();
 			$scope.page = "ohscene1";
 			autoScroll = setInterval($scope.asFunc, 500);
 			$scope.typedFunc();
 			$scope.stopMedia();
-		}else if ($scope.page == "ohstart" && ans == "no"){
+		}else if ($scope.page == "ohstart3" && ans == "no"){
 			$("#ohend2").show();
-			$("#ohstart").hide();
+			$("#ohstart3").hide();
 			$(".btnSkip").show();
 			$(".btnNext1").hide();
 			$scope.page = "ohend2";

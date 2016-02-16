@@ -29,7 +29,7 @@
 #category .spacer{
 	padding: 0;
 	margin: 0;
-	height: 10%;
+	height: 15%;
 }
 
 #category .title{
@@ -59,21 +59,25 @@
 }
 
 #category .btndiv{
-	height: 17%;
-	max-height: 60px;
+	height: 50%;
 	padding: 5px;
 }
 
 #category .btndiv .col{
 	height: 100%;
-	padding: 5px;
 	padding-top: 0;
 }
 
+#category .btndiv .col-40 div{
+	height: 25%;
+}
+
 #category .button-block{
-	margin: 3px;
-	height: 100%;
-	min-height: 100%;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	height: 20%;
+	min-height: 90%;
 	font-size: 3vh;
 	line-height: 3vh;
 }

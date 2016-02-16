@@ -83,3 +83,7 @@ ion-popover-view.fit .button-block{
 .scroll-bar-indicator {
     display: none !important;
 }
+
+.button-assertive{
+  background-color: #ff0099 !important;
+}

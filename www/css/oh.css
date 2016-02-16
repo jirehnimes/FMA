@@ -61,12 +61,52 @@
 	margin: 0;
 }
 
+#oh #ohstart1{
+	background-image: url("../img/scenes/oh/ohstart1.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#oh #ohstart2{
+	background-image: url("../img/scenes/oh/ohstart2.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#oh #ohstart3{
+	background-image: url("../img/scenes/oh/ohstart3.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#oh #ohscene1, #oh #ohend1{
+	background-image: url("../img/scenes/oh/ohscene1.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#oh #ohend2{
+	background-image: url("../img/scenes/oh/ohend2.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#oh #ohend3{
+	background-image: url("../img/scenes/oh/ohend3.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
 #oh .ohcontent div.typeddiv{
 	background-color: rgba(0,0,0,0.5);
 	width: 100%;
 	height: 40%;
 	padding: 10px;
 	overflow-y: auto;
+}
+
+#oh #ohstart2 div.typeddiv{
+	height: 30%;
 }
 
 #oh #ohscene1 div.typeddiv, #oh #ohend1 div.typeddiv, #oh #ohend2 div.typeddiv, #oh #ohend3 div.typeddiv{
@@ -81,7 +121,7 @@
     display: none;
 }
 
-#oh div.pcontent{
+#oh div.pcontent, #oh div.pcontent1{
 	display: none;
 }
 
