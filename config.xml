@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.fma608098" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.fma608098" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>AksyonVAW</name>
   <description>
-        An Ionic Framework and Cordova project.
+        AksyonVAW (Aksyon Violence Against Women) is a mobile application that calls on all users of information and communication technologies (ICT) – especially women and girls – to take control of technology and strategically use any ICT platform at hand for activism against gender-based violence. The project demonstrates the need for users to know their rights and to keep safe when online. The app features three types of violence women face online - such as cyber bullying, identity theft and online harassment - and provides some solutions and tips on what to do when one experiences such violence online.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="info@fma.ph" href="http://fma.ph/">
+      FMA
     </author>
   <content src="index.html"/>
   <access origin="*"/>

@@ -1,11 +1,54 @@
 angular.module('app.controllers', [])
 
-.controller('mainCtrl', function($scope) {
+.controller('mainCtrl', function($scope, $state, $ionicPlatform, $cordovaMedia) {
 	$scope.exitApp = function(){
 		ionic.Platform.exitApp();
 	};
 	// allow native scrollbar in android
 	$('html').addClass('android-scroll-bar');
+
+	$ionicPlatform.ready(function() {
+		var src = "/android_asset/www/audio/bgmusic.mp3";
+		var media = $cordovaMedia.newMedia(src, mediaSuccess, null, mediaStatusCallback);
+
+		$scope.playBG = function() {
+			media.setVolume(0.5);
+			media.play();
+		};
+
+		$scope.pauseMedia = function() {
+			media.pause();
+		};
+
+		$scope.stopMedia = function() {
+			media.stop();
+		};
+
+		var mediaSuccess = function() {
+            media.setVolume(0.5);
+			media.play();
+			$scope.playBG();
+	    }
+
+		var mediaStatusCallback = function(status) {
+	        if(status == 4) {
+	            media.setVolume(0.5);
+				media.play();
+				$scope.playBG();
+	        }else{
+	        	media.setVolume(0.5);
+				media.play();
+				$scope.playBG();
+	        }
+	    }
+
+		$scope.$on('destroy', function() {
+			media.release();
+		});
+
+		$scope.playBG();
+	});
+
 })
 
 .controller('aboutCtrl', function($scope) {
@@ -56,7 +99,7 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv").hide(0).delay(2000).fadeIn("slow");
 		$("#" + $scope.page + " div.typeddiv p").typed({
 			stringsElement: $("#" + $scope.page + " div.pcontent"),
-			typeSpeed: 0,
+			typeSpeed: 13,
 			contentType: 'html',
 			startDelay: 2000,
 			callback: function() {
@@ -96,7 +139,11 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv p").typed('stops');
 		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
-		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		if($scope.page == "itstart"){
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
+		}else{
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		}
 		clearInterval(autoScroll);
 		$scope.stopMedia();
 	};
@@ -263,7 +310,7 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv").hide(0).delay(2000).fadeIn("slow");
 		$("#" + $scope.page + " div.typeddiv p").typed({
 			stringsElement: $("#" + $scope.page + " div.pcontent"),
-			typeSpeed: 13,
+			typeSpeed: 11,
 			contentType: 'html',
 			startDelay: 2000,
 			callback: function() {
@@ -303,7 +350,11 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv p").typed('stops');
 		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
-		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
+		if ($scope.page == "cbstart"){
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
+		}else{
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		}
 		clearInterval(autoScroll);
 		$scope.stopMedia();
 	};
@@ -475,7 +526,11 @@ angular.module('app.controllers', [])
 		$("#" + $scope.page + " div.typeddiv p").typed('stops');
 		$("#" + $scope.page + " div.typeddiv").stop().fadeIn();
 		// $("#" + $scope.page + " div.typeddiv p").text($("#" + $scope.page + " p").text());
-		$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
+		if($scope.page == "ohstart1" || $scope.page == "ohstart2" || $scope.page == "ohstart3"){
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent1").show());
+		}else{
+			$("#" + $scope.page + " div.typeddiv").html($("#" + $scope.page + " .pcontent").show());
+		}
 		// $("p.typeddelay").css("display", "none");
 		clearInterval(autoScroll);
 		$scope.stopMedia();

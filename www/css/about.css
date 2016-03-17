@@ -7,6 +7,10 @@
 	color: orange;
 }
 
+#about h4{
+	color: white;
+}
+
 #about ion-content{
 	padding: 0;
 	margin: 0;
@@ -19,6 +23,35 @@
 }
 
 #about .imgtitlediv .col{
+	height: 100%;
+	padding: 5px;
+	padding-top: 0;
+}
+
+#about .imgtitlediv2{
+	height: 30%;
+	top: 0;
+	background-color: #ff0099;
+}
+
+#about .imgtitlediv2 #imgtitle{
+	height: 100%;
+	width: 40%;
+}
+
+#about .imgtitlediv2 .col{
+	height: 100%;
+	padding: 5px;
+	padding-top: 0;
+}
+
+#about .imgtitlediv3{
+	height: 30%;
+	top: 0;
+	background-color: white;
+}
+
+#about .imgtitlediv3 .col{
 	height: 100%;
 	padding: 5px;
 	padding-top: 0;
