@@ -7,6 +7,13 @@ angular.module('app.controllers', [])
 	// allow native scrollbar in android
 	$('html').addClass('android-scroll-bar');
 
+	$scope.gotoContact = function() {
+    // $state.go('signup');
+    	console.log('gotoContact');
+     window.open( 'http://ph.tbtt.apc.org/mapit/', '_system', 'location=no');
+       
+  	};
+
 	$ionicPlatform.ready(function() {
 		var src = "/android_asset/www/audio/bgmusic.mp3";
 		var media = $cordovaMedia.newMedia(src, mediaSuccess, null, mediaStatusCallback);
